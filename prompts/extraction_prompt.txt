@@ -1,0 +1,18 @@
+Extract the following from the message:
+
+location
+trigger
+visible_sign
+duration
+
+If not present write "Not Available"
+
+Return JSON:
+
+{
+"location":"",
+"trigger":"",
+"visible_sign":"",
+"duration":""
+}
+Do not assume.
