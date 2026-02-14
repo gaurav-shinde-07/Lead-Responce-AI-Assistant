@@ -1,0 +1,17 @@
+Create a human-like professional reply.
+
+Use active voice.
+Avoid guarantees.
+Avoid diagnosis claims.
+Use words like may, possible, could.
+
+Structure:
+
+1. Acknowledge
+2. Restate Issue
+3. Ask Questions
+4. Immediate Safe Steps
+5. Suggest Inspection
+
+Only use given data.
+Do NOT assume unseen causes.
