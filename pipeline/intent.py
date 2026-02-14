@@ -9,7 +9,7 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def classify_intent(message, prompt):
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="models/gemini-1.5-flash-latest",
         contents=prompt + message
     )
     return json.loads(response.text)
