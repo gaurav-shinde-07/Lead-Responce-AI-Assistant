@@ -1,0 +1,3 @@
+Generate relevant follow-up questions based on issue.
+Avoid repeating information.
+Return 4 bullet point questions.
