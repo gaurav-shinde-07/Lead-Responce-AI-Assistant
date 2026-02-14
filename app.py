@@ -10,7 +10,11 @@ from pipeline.response import generate_response
 
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(
+    api_key=os.getenv("GEMINI_API_KEY"),
+    http_options={"api_version": "v1"}
+)
+
 
 st.title("AI Lead Response Assistant")
 
