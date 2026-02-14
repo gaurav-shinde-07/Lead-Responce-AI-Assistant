@@ -12,7 +12,7 @@ client = genai.Client(
 
 def classify_intent(message, prompt):
     response = client.models.generate_content(
-        model="models/gemini-1.5-flash",
+        model="models/gemini-2.0-flash",
         contents=prompt + message
     )
     return json.loads(response.text)
