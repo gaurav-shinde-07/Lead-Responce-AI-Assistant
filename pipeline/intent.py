@@ -1,14 +1,15 @@
-import google.generativeai as genai
-import json
-from dotenv import load_dotenv
+from google import genai
 import os
+from dotenv import load_dotenv
+import json
 
 load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-model = genai.GenerativeModel("gemini-1.5-flash")
-
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def classify_intent(message, prompt):
-    response = model.generate_content(prompt + message)
+    response = client.models.generate_content(
+        model="gemini-1.5-flash",
+        contents=prompt + message
+    )
     return json.loads(response.text)
