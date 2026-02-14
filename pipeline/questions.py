@@ -1,3 +1,6 @@
-def generate_questions(data, prompt, model):
-    response = model.generate_content(prompt + str(data))
+def generate_questions(data, prompt, client):
+    response = client.models.generate_content(
+        model="gemini-1.5-flash",
+        contents=prompt + str(data)
+    )
     return response.text
