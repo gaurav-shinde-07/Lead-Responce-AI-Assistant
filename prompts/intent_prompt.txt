@@ -1,0 +1,9 @@
+Classify the customer issue into ONE category from:
+Dampness, Leakage, Structural Crack, Plumbing, Electrical Heating, Mold, Paint Damage, Unknown.
+
+Return only JSON:
+
+{"intent": "value"}
+
+If unsure return "Unknown"
+Do NOT assume facts.
