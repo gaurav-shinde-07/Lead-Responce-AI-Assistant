@@ -1,15 +1,16 @@
 import streamlit as st
 from dotenv import load_dotenv
 import os
-import google.generativeai as genai
+from google import genai
+
 from pipeline.intent import classify_intent
 from pipeline.extractor import extract_info
 from pipeline.questions import generate_questions
 from pipeline.response import generate_response
 
 load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash")
+
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 st.title("AI Lead Response Assistant")
 
@@ -30,8 +31,8 @@ if st.button("Generate Reply"):
         response_prompt = f.read()
 
     intent = classify_intent(message, intent_prompt)
-    extracted = extract_info(message, extraction_prompt, model)
-    questions = generate_questions(extracted, question_prompt, model)
-    final = generate_response(extracted, questions, response_prompt, model)
+    extracted = extract_info(message, extraction_prompt, client)
+    questions = generate_questions(extracted, question_prompt, client)
+    final = generate_response(extracted, questions, response_prompt, client)
 
     st.write(final)
