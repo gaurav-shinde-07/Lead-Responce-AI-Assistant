@@ -1,18 +1,16 @@
-from google import genai
+from openai import OpenAI
 import os
 from dotenv import load_dotenv
 import json
 
 load_dotenv()
 
-client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY"),
-    http_options={"api_version": "v1"}
-)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def classify_intent(message, prompt):
-    response = client.models.generate_content(
-        model="models/gemini-2.0-flash",
-        contents=prompt + message
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt + message}],
+        temperature=0
     )
-    return json.loads(response.text)
+    return json.loads(response.choices[0].message.content)

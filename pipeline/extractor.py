@@ -1,6 +1,7 @@
 def extract_info(message, prompt, client):
-    response = client.models.generate_content(
-        model="models/gemini-2.0-flash",
-        contents=prompt + message
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt + message}],
+        temperature=0
     )
-    return response.text
+    return response.choices[0].message.content

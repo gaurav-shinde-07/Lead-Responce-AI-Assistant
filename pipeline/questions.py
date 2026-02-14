@@ -1,6 +1,7 @@
 def generate_questions(data, prompt, client):
-    response = client.models.generate_content(
-        model="models/gemini-2.0-flash",
-        contents=prompt + str(data)
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt + str(data)}],
+        temperature=0.5
     )
-    return response.text
+    return response.choices[0].message.content
