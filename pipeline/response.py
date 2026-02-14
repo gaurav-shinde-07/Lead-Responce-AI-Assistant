@@ -1,4 +1,7 @@
-def generate_response(data, questions, prompt, model):
+def generate_response(data, questions, prompt, client):
     combined = f"{data}\n{questions}"
-    response = model.generate_content(prompt + combined)
+    response = client.models.generate_content(
+        model="gemini-1.5-flash",
+        contents=prompt + combined
+    )
     return response.text
